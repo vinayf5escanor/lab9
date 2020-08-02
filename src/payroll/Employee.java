@@ -21,10 +21,17 @@ public class Employee
 	 * Our no-arg constructor for safety in
 	 * inheritance.
 	 */
-	public Employee()
-	{
+        private static Employee instance;
+        private Employee(){
+	
+}
+        public static Employee getInstance (){
+	if (instance ==null){
+		instance = new Employee();
 		
 	}
+	return instance;
+}
         
         public Employee(String givenName, double givenWage, double givenHours)
         {

@@ -14,29 +14,6 @@ import java.util.Scanner;
 public class Payroll
 {
  private Employee employees[] = new Employee[100];//the array to hold Employee Objects
- 
- /**
-  * A main method where we create an instance of the payroll
-  * and then call the private run method on it.
-  * We also catch our Exceptions here from the Employee
-  * class.
-  */
- public static void main (String[] args)
- {
-   try
-   {
-     Payroll app = new Payroll();
-     app.run();
-   }
-   catch (NumberFormatException e)
-   {
-     System.out.println("A number format is incorrect " + e.getMessage() + " Please ensure hours and wage are entered as numbers and not words");
-   }
-   catch(Exception e)
-   {
-     System.out.println("An exception was caught while trying to process employees: " + e.getMessage()); 
-   }
-  }//end main method
 
  /**
   * A private run method that prompts the user for input and
@@ -44,7 +21,7 @@ public class Payroll
   * Finally, we call the print method to print out the payroll
   * for each employee and the total.
   */
-private void run()
+void run()
 {
   Scanner sc= new Scanner(System.in);
   boolean shouldContinue= true;//to keep track of whether the user wants to continue
@@ -67,7 +44,7 @@ private void run()
     }
     else
     {
-        Employee emp = new Employee(name, numHours,wage);//create a new Employee with the given info
+        Employee emp = Employee.getInstance();//create a new Employee with the given info
         employees[numEmployees]= emp;//add the new employee to the array
     }
     
